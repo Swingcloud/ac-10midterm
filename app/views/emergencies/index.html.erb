@@ -1,5 +1,35 @@
 <h1 class="text-center"> >>>鍵盤救災我最行<<< </h1>
 
+
+
+
+<p><%= link_to"新增文章", new_emergency_path%></p>
+<%= link_to '原排列', emergencies_path %>
+<table class="table table-striped">
+	<tr>
+		<th>標題</th>
+		<th>作者</th>
+		<th>回應數</th>
+		<th>編輯</th>
+		<th>刪除</th>
+	</tr>
+	<% @emergencies.each do |e| %>
+	<tr>
+		<td><h3><%= link_to e.title, post_path(e) %></h3></td>
+		<td><h3><%= e.short_name %></h3></td>
+		<td><%= e.replies.count %></td>
+		<td><%= link_to "編輯", edit_post_path(e) %></td>
+		<td><%= link_to "刪除", post_path(e), :method => :delete%></td>
+	<% end %>
+	</tr>
+</table>
+<%#= paginate @emergencies%>
+
+
+
+
+
+
 <h3 class="text-center">快速新增</h3>
 
 <%= form_for @emergency, :url => emergencies_path do |f| %>
