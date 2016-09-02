@@ -1,6 +1,7 @@
 class EmergencyRepliesController < ApplicationController
 
 	before_action :find_er_post
+	before_action :which_replies , :only => [:edit, :destroy]
 
 	def new
 		@reply = Reply.new 
@@ -19,6 +20,13 @@ class EmergencyRepliesController < ApplicationController
 
 
 
+	def destroy
+		@reply.destroy
+		redirect_to emergency_path(@emergency)
+	end
+
+
+
 
 
 
@@ -30,6 +38,10 @@ class EmergencyRepliesController < ApplicationController
 
 	def params_permitted
 		params.require(:reply).permit(:comment)
+	end
+
+	def which_replies
+		@reply = Reply.find(params[:id])
 	end
 
 	

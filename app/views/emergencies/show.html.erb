@@ -1,22 +1,29 @@
 <div class="container">
-	<h1>
+	<h1 class="text-center">
 		<%= @emergency.title %>
 	</h1>
-	<%= @emergency.category.name  %>
+	<h4>分類：<%= @emergency.category.name  %></h4>
 
-	<table>
-		<tr>
-			<th><%= simple_format @emergency.content %></th>
-		</tr>
-		<tr>
-			<td>評論人</td>
-			<td>內容</td>
+	
+	
+			<h5><%= simple_format @emergency.content %></h5>
 			<p>回應數：<%=@replies.count%></p>
+		<table class="table table-striped">
+		<tr>
+			<td class="col-lg-9">內容</td>
+			<td class="col-lg-2">回覆人</td>
+			<td class="col-lg-1"></td>
+
 		</tr>
 		<% @replies.each do |r| %>
 		<tr>
-			<td><%= r.user.short_name %></td>
-			<td><%= r.comment %></td>
+			<td class="col-lg-9"><%= r.comment %></td>
+			<td class="col-lg-1"><%= r.user.short_name %></td>
+			<td class="col-lg-1">
+				<% if r.user == current_user %>
+					<%= link_to "刪除", emergency_response_path(@emergency,r), :method => :delete %>
+				<% end %>
+			</td>
 		<% end %>
 		</tr>
 	</table>
