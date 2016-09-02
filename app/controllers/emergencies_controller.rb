@@ -27,6 +27,12 @@ class EmergenciesController < ApplicationController
 		
 	end
 
+	def destroy
+		@emergency.destroy
+		flash[:alert] = "刪除成功"
+		redirect_to emergencies_path
+	end
+
 
 
 	private
