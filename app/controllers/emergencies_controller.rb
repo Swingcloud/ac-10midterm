@@ -4,7 +4,7 @@ class EmergenciesController < ApplicationController
 	
 
 	def index	
-		@emergencies = Emergency.all
+		@emergencies = Emergency.page(params[:id]).per(10)
 		@emergency = Emergency.new
 	end
 
