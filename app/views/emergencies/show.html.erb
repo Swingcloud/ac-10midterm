@@ -11,16 +11,16 @@
 		<tr>
 			<td>評論人</td>
 			<td>內容</td>
-			<p>回應數：<%#=@replies.count%></p>
+			<p>回應數：<%=@replies.count%></p>
 		</tr>
-		<%# @replies.each do |r| %>
+		<% @replies.each do |r| %>
 		<tr>
-			<td><%#= r.user.nickname %></td>
-			<td><%#= r.comment %></td>
-		<%# end %>
+			<td><%= r.user.short_name %></td>
+			<td><%= r.comment %></td>
+		<% end %>
 		</tr>
 	</table>
-	<%#= link_to '發表評論', new_post_response_path(@post) %>
+	<%= link_to '發表評論', new_emergency_response_path(@emergency) %>
 	<br>
 	<%= link_to '回首頁' , emergencies_path %>
 </div>

@@ -1,0 +1,10 @@
+<% if @reply.errors.any? %>
+      <ul>
+      <% @reply.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+<% end %>
+<div class="from-group col-lg-12"></div>
+<%= f.label :comment, "回覆"%>
+<%= f.text_area :comment,:class =>"form-control" %>

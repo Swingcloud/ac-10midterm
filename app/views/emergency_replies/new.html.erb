@@ -1,0 +1,7 @@
+<%= form_for @reply,:url => emergency_responses_path(@emergency) do |f| %>
+
+	<%= render :partial => "form", :locals => {:f => f} %>
+	<br>
+    <%= f.submit "送出回覆" , :class =>"btn btn-primary"%>
+ <%end %>
+ 

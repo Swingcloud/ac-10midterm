@@ -24,7 +24,7 @@ class EmergenciesController < ApplicationController
 	end
 
 	def show
-		
+		@replies = @emergency.replies
 	end
 
 	def destroy

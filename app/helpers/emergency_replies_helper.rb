@@ -1,0 +1,2 @@
+module EmergencyRepliesHelper
+end
