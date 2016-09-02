@@ -1,0 +1,8 @@
+<h1 class="text-center"> >>>鍵盤救災我最行<<< </h1>
+
+<h3 class="text-center">快速新增</h3>
+
+<%= form_for @emergency, :url => emergencies_path do |f| %>
+	<%= render :partial => "form", :locals => {:f => f} %>
+	<%= f.submit "送出" , :class =>"btn btn-primary"%>
+<% end %>
