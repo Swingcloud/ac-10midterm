@@ -14,8 +14,9 @@ class EmergencyRepliesController < ApplicationController
 			redirect_to emergency_path(@emergency)
 		else
 			render :action => :new
+		end
 	end
-	end
+
 
 
 

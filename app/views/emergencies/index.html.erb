@@ -18,8 +18,20 @@
 		<td><h4><%= link_to e.title, emergency_path(e) %></h4></td>
 		<td><h4><%= e.user.short_name %></h4></td>
 		<td><h4><%= e.created_at.strftime("%b.%d %Y %H:%M") %></h4></td>
-		<td><h4><%= link_to "編輯", edit_emergency_path(e) %></h4></td>
-		<td><h4><%= link_to "刪除", emergency_path(e), :method => :delete%></h4></td>
+		<td>
+			<h4>
+				<% if e.user == current_user %>
+					<%= link_to "編輯", edit_emergency_path(e) %>
+				<% end %>
+			</h4>
+		</td>
+		<td>
+			<h4>
+				<% if e.user == current_user %>
+					<%= link_to "刪除", emergency_path(e), :method => :delete%>
+				<% end %>
+			</h4>
+		</td>
 	<% end %>
 	</tr>
 </table>

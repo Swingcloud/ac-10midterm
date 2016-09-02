@@ -1,7 +1,7 @@
 class EmergenciesController < ApplicationController
 	before_action :er_post, :only => [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, :except => [:index]
-
+	
 
 	def index	
 		@emergencies = Emergency.all
@@ -28,9 +28,26 @@ class EmergenciesController < ApplicationController
 	end
 
 	def destroy
+
 		@emergency.destroy
 		flash[:alert] = "刪除成功"
 		redirect_to emergencies_path
+	end
+
+
+
+	def edit
+
+	end
+
+	def update
+		
+		if @emergency.update(er_params)
+			flash[:notice]="編輯成功"
+			redirect_to emergency_path(@emergency)
+		else
+			render :action => :edit
+		end
 	end
 
 
@@ -44,6 +61,8 @@ class EmergenciesController < ApplicationController
 	def er_post
 		@emergency = Emergency.find(params[:id])
 	end
+
+
 
 
 end
