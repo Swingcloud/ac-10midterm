@@ -7,19 +7,19 @@
 <%= link_to '原排列', emergencies_path %>
 <table class="table table-striped">
 	<tr>
-		<th>標題</th>
-		<th>作者</th>
-		<th>回應數</th>
-		<th>編輯</th>
-		<th>刪除</th>
+		<th><h4>標題</h4></th>
+		<th><h4>作者</h4></th>
+		<th><h4>回應數</h4></th>
+		<th><h4>編輯</h4></th>
+		<th><h4>刪除</h4></th>
 	</tr>
 	<% @emergencies.each do |e| %>
 	<tr>
-		<td><h3><%= link_to e.title, post_path(e) %></h3></td>
-		<td><h3><%= e.short_name %></h3></td>
-		<td><%= e.replies.count %></td>
-		<td><%= link_to "編輯", edit_post_path(e) %></td>
-		<td><%= link_to "刪除", post_path(e), :method => :delete%></td>
+		<td><h4><%= link_to e.title, emergency_path(e) %></h4></td>
+		<td><h4><%= e.user.short_name %></h4></td>
+		<td><h4><%#= e.replies.count %></h4></td>
+		<td><h4><%= link_to "編輯", edit_emergency_path(e) %></h4></td>
+		<td><h4><%= link_to "刪除", emergency_path(e), :method => :delete%></h4></td>
 	<% end %>
 	</tr>
 </table>

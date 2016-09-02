@@ -1,4 +1,7 @@
 class EmergenciesController < ApplicationController
+	before_action :er_post, :only => [:show, :edit, :update, :destroy]
+	before_action :authenticate_user!, :except => [:index]
+
 
 	def index	
 		@emergencies = Emergency.all
@@ -6,7 +9,7 @@ class EmergenciesController < ApplicationController
 	end
 
 	def new
-		@emergendy = Emergency.new
+		@emergency = Emergency.new
 	end
 
 	def create
@@ -20,6 +23,10 @@ class EmergenciesController < ApplicationController
 		end
 	end
 
+	def show
+		
+	end
+
 
 
 	private
@@ -28,6 +35,9 @@ class EmergenciesController < ApplicationController
 		params.require(:emergency).permit(:title, :content, :category_id)
 	end 
 
+	def er_post
+		@emergency = Emergency.find(params[:id])
+	end
 
 
 end
